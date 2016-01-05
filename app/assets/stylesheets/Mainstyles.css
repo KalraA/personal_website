@@ -1,0 +1,243 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: none !important;
+}
+html {
+  margin: 0;
+  background: url("https://dl.dropboxusercontent.com/u/61478139/tileable-classic-nebula-3120261-o.jpg") !important;
+  font-family: fantasy;
+}
+.my-navbar {
+  font-family: fantasy;
+  display: inline-block;
+  padding-left: 20;
+  padding-right: 20;
+  padding-top: 22;
+  float: right;
+  padding-bottom: 16;
+  transition:.5s;
+}
+.my-nav {
+  width: 100%;
+  background-color: black;
+  height: 80px;
+  color: white;
+  font-size: 30px;
+}
+.my-me {
+  font-family: fantasy;
+  float: left;
+  padding-top: 22;
+  padding-left: 10;
+  padding-right: 10;
+  padding-bottom: 16;
+  transition: .5s;
+}
+.my-navbar:hover {
+  background-color: #7F00FF;
+}
+.my-me:hover {
+  background-color: #7F00FF;
+}
+.my-line {
+  height: 5px;
+  width: 20000px;
+  background-color: #7F00FF;
+  opacity: 1;
+}
+.my-main {
+  background-image: url("https://dl.dropboxusercontent.com/u/61478139/mainBack.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 15;
+  display: inline-block;
+  width:100%;
+  height:60%;
+  background-color:black;
+  color: white;
+}
+#my-mainRight {
+  display: inline-block;
+  width: 43%;
+  margin-left: -27%
+}
+#my-me {
+  font-size: 60px;
+}
+#my-descrip {
+  margin-top: -40px;
+  font-size: 25px;
+}
+#my-profile {
+  float: left;
+  width: 25%;
+  display: inline-block;
+  border-radius: 50px;
+  border: 5px solid black;
+}
+
+.my-mainBut {
+  display: inline-block;
+  margin-left: 30;
+  float: left;
+  background-color: #7F00FF;
+  padding: 15px;
+  border-radius: 20px;
+  margin-top: -30px;
+  transition: .5s;
+}
+
+.my-mainBut:hover {
+  background-color: white;
+  color: black;
+}
+
+.my-post {
+  height: 250px;
+  width: 80%;
+  margin-top: 15%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-postTitle {
+  display: inline-block;
+  border: 2px dotted red;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  float:left;
+  margin-left: 25%;
+  margin-top: -30;
+  margin-bottom: 0;
+  color: white;
+  background-color: red;
+}
+.my-postImageDiv {
+  height: 250px;
+  width: 30%;
+  background-image: url("https://dl.dropboxusercontent.com/u/61478139/Me!.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: inline-block;
+  float: right;
+}
+.my-postDescrip {
+  width: 100%;
+  display: inline-block;
+  float: left;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.my-postText {
+  width: 70%;
+  height: 250px;
+  float: left;
+  padding-top: -50px;
+}
+
+#my-postBut {
+  float: right;
+  margin-right: 30.5%;
+  font-size: 12px;
+  padding: 5px;
+  padding-top: 8px;
+  border-radius: 3px;
+  color: white;
+}
+
+#my-postBut:hover {
+  background-color: black
+}
+
+.my-feature {
+  height: 40%;
+  width: 100%;
+  background-image: url("https://dl.dropboxusercontent.com/u/61478139/TTT5.png");
+  background-size: cover;
+}
+.my-headTitle {
+   float: left;
+   margin-left: 100px;
+   margin-top: -70;
+   padding-top: 25px;
+   padding-bottom: 20px;
+   padding-left: 25px;
+   padding-right: 25px;
+   font-size: 65px;
+   font-family: fantasy;
+   background-color: white;
+   border: 5px solid #7F00FF;
+   opacity: 1;
+}
+.my-content {
+  margin-top: 0%;
+  height:100%;
+  text-align: left;
+  font-family: fantasy;
+  width: 100%;
+  opacity: 1;
+  background: none !important;
+  color: white;
+}
+.my-stuff {
+  float: left;
+  margin-left: 5%;
+  margin-top: -80px;
+  background: none !important;
+}
+#my-space {
+  height: 150;
+  width: 100%;
+}
+.my-container {
+}
+#my-uline {
+  margin-top: 50;
+}
+
+#transs {
+  opacity:0;
+}
+.carousel-control {
+	background: none !important;
+	filter: none !important;
+	progid:none !important;
+}
+#portpageBut {
+  margin-right: 200;
+}
+
+.my-foot {
+  background-image: url("https://dl.dropboxusercontent.com/u/61478139/Earth.png");
+  background-size:contain;
+  height: 300;
+  width:2000px;
+}
+.my-contact-button {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 15 20 10 10;
+  display: inline-block;
+  background-color: #400080
+}
+#footStuff {
+  font-family:fantasy;
+  float: left;
+  margin-left: 400;
+  margin-top: 50;
+  color: white;
+}
+.my-filler {
+  margin-bottom: 3px;
+}
