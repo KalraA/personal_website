@@ -1,22 +1,31 @@
+
+.my-feature {
+  height: 350px;
+  width: 100%;
+  background-image: url("https://dl.dropboxusercontent.com/u/61478139/TTT5.png");
+  background-size: cover;
+}
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   text-align: center;
   background: none !important;
 }
 html {
-  margin: 0;
+  text-decoration: none !important;
+  margin: 0px;
   background: url("https://dl.dropboxusercontent.com/u/61478139/tileable-classic-nebula-3120261-o.jpg") !important;
   font-family: fantasy;
 }
 .my-navbar {
+  text-align: left;
   font-family: fantasy;
   display: inline-block;
-  padding-left: 20;
-  padding-right: 20;
-  padding-top: 22;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 22px;
   float: right;
-  padding-bottom: 16;
+  padding-bottom: 16px;
   transition:.5s;
 }
 .my-nav {
@@ -26,24 +35,24 @@ html {
   color: white;
   font-size: 30px;
 }
-.my-me {
+.my-Me {
   font-family: fantasy;
   float: left;
-  padding-top: 22;
-  padding-left: 10;
-  padding-right: 10;
-  padding-bottom: 16;
+  padding-top: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 16px;
   transition: .5s;
 }
 .my-navbar:hover {
   background-color: #7F00FF;
 }
-.my-me:hover {
+.my-Me:hover {
   background-color: #7F00FF;
 }
 .my-line {
   height: 5px;
-  width: 20000px;
+  width: 100%;
   background-color: #7F00FF;
   opacity: 1;
 }
@@ -53,10 +62,10 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding: 15;
+  padding: 15px;
   display: inline-block;
   width:100%;
-  height:60%;
+  padding-bottom: 30px;
   background-color:black;
   color: white;
 }
@@ -82,7 +91,7 @@ html {
 
 .my-mainBut {
   display: inline-block;
-  margin-left: 30;
+  margin-left: 30px;
   float: left;
   background-color: #7F00FF;
   padding: 15px;
@@ -99,7 +108,8 @@ html {
 .my-post {
   height: 250px;
   width: 80%;
-  margin-top: 15%;
+  margin-top: 7%;
+  margin-bottom: 7%;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
@@ -114,8 +124,8 @@ html {
   padding-bottom: 5px;
   float:left;
   margin-left: 25%;
-  margin-top: -30;
-  margin-bottom: 0;
+  margin-top: -30px;
+  margin-bottom: 0px;
   color: white;
   background-color: red;
 }
@@ -160,29 +170,20 @@ html {
   background-color: black
 }
 
-.my-feature {
-  height: 40%;
-  width: 100%;
-  background-image: url("https://dl.dropboxusercontent.com/u/61478139/TTT5.png");
-  background-size: cover;
-}
 .my-headTitle {
-   float: left;
-   margin-left: 100px;
-   margin-top: -70;
+   text-align: center;
    padding-top: 25px;
    padding-bottom: 20px;
    padding-left: 25px;
    padding-right: 25px;
+   margin-bottom: 30px;
    font-size: 65px;
    font-family: fantasy;
-   background-color: white;
-   border: 5px solid #7F00FF;
    opacity: 1;
 }
 .my-content {
   margin-top: 0%;
-  height:100%;
+  height: 1000px;
   text-align: left;
   font-family: fantasy;
   width: 100%;
@@ -196,14 +197,8 @@ html {
   margin-top: -80px;
   background: none !important;
 }
-#my-space {
-  height: 150;
-  width: 100%;
-}
-.my-container {
-}
 #my-uline {
-  margin-top: 50;
+  margin-top: 50px;
 }
 
 #transs {
@@ -215,27 +210,30 @@ html {
 	progid:none !important;
 }
 #portpageBut {
-  margin-right: 200;
+  margin-right: 200px;
 }
 
 .my-foot {
   background-image: url("https://dl.dropboxusercontent.com/u/61478139/Earth.png");
   background-size:contain;
-  height: 300;
-  width:2000px;
+  height: 220px;
+  width:100%;
+}
+#artcontent {
+  height:auto !important;
 }
 .my-contact-button {
   margin-right: 10px;
   margin-left: 10px;
-  padding: 15 20 10 10;
+  padding: 15px 20px 10px 10px;
   display: inline-block;
   background-color: #400080
 }
 #footStuff {
   font-family:fantasy;
   float: left;
-  margin-left: 400;
-  margin-top: 50;
+  margin-left: 400px;
+  margin-top: 50px;
   color: white;
 }
 .my-filler {

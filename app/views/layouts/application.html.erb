@@ -5,16 +5,42 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,500,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 </head>
 <body>
-
+  <div class = "my-nav" >
+    <ul>
+      <a href= "/"> <li class = 'my-Me'> <strong> Agastya Kalra </strong></li> </a>
+      <a href= "/"><li class = 'my-navbar'> Blog </li> </a>
+      <a href= "/"><li class = 'my-navbar'> Portfolio </li> </a>
+      <li class = 'my-navbar'> About </li>
+    </ul>
+  </div>
+  <div class = "my-line"></div>
 <%= yield %>
 
+
+<br>
+<div class = "my-line">
+  </div>
+<div class = "my-foot">
+  <div id = "footStuff">
+  <h2 class="my-footTitle"> I love meeting new people! Let's get in touch! </h2>
+  <p class = "my-contact-button">
+    agastya.kalra@gmail.com
+  </p>
+  <p class = "my-contact-button">
+    Github
+  </p>
+  <p class = "my-contact-button">
+    Linkedin
+  </p>
+  <p class = "my-contact-button">
+    Youtube
+  </p>
+  <p class = "my-contact-button">
+    Google
+  </p>
+</div>
 </body>
 </html>

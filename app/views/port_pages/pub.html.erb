@@ -1,0 +1,14 @@
+  <div class = "my-content", id = "art-content">
+    <h2 class = "my-headTitle" style = "width = 100%;">
+      <%= @speech.title %>
+      <hr>
+    </h2>
+    <p style="float: right; margin-right: 20px;"> <%= @speech.date %> </p>
+    <iframe width="960px" height="640px" src= <%= @speech.youLink %>frameborder="0" allowfullscreen></iframe>    <div class="my-stuff">
+      <h1>
+        Description:
+      </h1>
+      <p class="my-filler">
+        <%= @speech.description %>
+      </p>
+    </div>

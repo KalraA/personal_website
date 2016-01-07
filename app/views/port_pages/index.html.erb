@@ -1,0 +1,71 @@
+
+  <div class = "my-main">
+  <div class = "my-images">
+    <img id = "my-profile", src="https://dl.dropboxusercontent.com/u/61478139/Agastya_Backdrop.jpg" />
+  </div>
+  <div id = "my-mainRight">
+    <h3 id = "my-me">
+      Yo, it's Agastya,
+    </h3>
+    <h5 id = "my-descrip">
+      I'm a programmer, animator, artist, web developer, philospher, dancer, and chess player studying computer science at the University of Waterloo.
+    </h5>
+  </div>
+  <div id = "my-mainLeft">
+  </div>
+  <p class = "my-mainBut"> Github </p>
+  <p class = "my-mainBut"> Resume </p>
+  <p class = "my-mainBut"> Portfolio </p>
+</div>
+<div class = "my-line">
+</div>
+<% @portpages.each do |pp| %>
+<div class = "my-post">
+  <div class = "my-postText">
+<h2 class = "my-postTitle">
+  <%= pp.title %>
+</h2>
+  <p class = "my-postDescrip">
+    <%= pp.description %>
+    <br>
+    <%= link_to "Learn more", portpage_path(pp) %>
+  </p>
+</div>
+  <div class = "my-postImageDiv">
+</div>
+</div>
+<% end %>
+
+<% @arts.each do |a| %>
+<div class = "my-post">
+  <div class = "my-postText">
+<h2 class = "my-postTitle">
+  <%= a.title %>
+</h2>
+  <p class = "my-postDescrip">
+    <%= a.description %>
+    <br>
+    <%= link_to "Learn more", artz_path(a) %>
+  </p>
+</div>
+  <div class = "my-postImageDiv">
+</div>
+</div>
+<% end %>
+
+<% @pubs.each do |pp| %>
+<div class = "my-post">
+  <div class = "my-postText">
+<h2 class = "my-postTitle">
+  <%= pp.title %>
+</h2>
+  <p class = "my-postDescrip">
+    <%= pp.description %>
+    <br>
+    <%= link_to "Learn more", pubz_path(pp) %>
+  </p>
+</div>
+  <div class = "my-postImageDiv">
+</div>
+</div>
+<% end %>

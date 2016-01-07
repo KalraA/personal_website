@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'pages#welcome'
+  root 'port_pages#index'
+  get 'programming/:id' => 'port_pages#showw', as: :portpage
+  get 'arts/:id' => 'port_pages#art', as: :artz
+  get 'public-speaking/:id' => 'port_pages#pub', as: :pubz
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
