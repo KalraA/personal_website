@@ -1,15 +1,16 @@
-  <div class = "my-content", id = "art-content">
-    <h2 class = "my-headTitle" style = "width = 100%;">
-      <%= @piece.title %>
-      <hr>
-    </h2>
-    <p style="float: right; margin-right: 20px;"> <%= @piece.date %> </p>
-    <img src = <%= @piece.photoLink %> style = "width: 60%">
-    <div class="my-stuff">
-      <h1>
-        Description:
-      </h1>
-      <p class="my-filler">
-        <%= @piece.description %>
-      </p>
-    </div>
+<div class = "my-content", id = "art-content", style = "text-align: center">
+  <h2 class = "my-headTitle" style = "width = 100%;">
+    <%= @piece.title %>
+    <hr>
+  </h2>
+  <br>
+  <p style="float: right; margin-right: 20px;"> <%= @piece.date %> </p>
+  <img src = <%= @piece.photoLink %> style = "width: 60%; border: 5px solid white">
+<br>
+    <h1>
+      Description:
+    </h1>
+    <p class="my-filler">
+      <%= @piece.description %>
+    </p>
+</div>
