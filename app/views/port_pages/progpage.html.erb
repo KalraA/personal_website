@@ -1,0 +1,25 @@
+<div class = "my-content", id = "art-content", style = "text-align: center">
+  <h2 class = "my-headTitle" style = "width = 100%;">
+    Programming
+    <hr>
+  </h2>
+  <br>
+</div>
+
+<% @portpages.each do |pp| %>
+<div class = "my-post">
+  <div class = "my-postText">
+<h2 class = "my-postTitle">
+  <%= pp.title %>
+</h2>
+  <p class = "my-postDescrip">
+    <%= pp.description %>
+    <br>
+    <%= link_to "Learn more", portpage_path(pp) %>
+  </p>
+</div>
+<div class = "my-postImageDiv">
+
+</div>
+</div>
+<% end %>

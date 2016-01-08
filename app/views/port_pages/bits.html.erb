@@ -1,0 +1,51 @@
+<div class = "my-content", id = "art-content", style = "text-align: center">
+  <h2 class = "my-headTitle" style = "width = 100%;">
+    The Power of Bits!
+    <hr>
+  </h2>
+  <br>
+  <p style="float: right; margin-right: 20px;"> January 2016 </p>
+<br>
+    <h1>
+      The Problem:
+    </h1>
+    <p class="my-filler">
+      The problem we are trying to solve is quite simple, given a list of positive numbers, find if any two numbers are n apart, and do it with the best time complexity possible.
+    </p>
+    <h3>
+      The Obvious:
+    </h3>
+    <p>
+      So the obvious thing is to take the first item in the list, and check it against every other item in the list. However this has a run time of the sum of numbers 1..n, which is (n*(n+1))/2, which in Big O, is O(n^2). However the challenge was to do it better!
+    </p>
+    <h3>
+      Sorting it:
+    </h3>
+    <p>
+      So what if we sorted it with mergesort, then check go through the list one more time checking each number with the ones next to it, and if the difference is greater than 'a', stop looking. This has an average case of O(nlog(n) + n) which is O(nlog(n)), however worst case is O(n^2) still. Can we do better?
+    </p>
+    <h3>
+      Binaries!
+    </h3>
+    <p>
+      So the best solution provided by the asker was O(logn) time, but I say you can do it in O(n) using binary numbers. <br>
+      Step 1: <br>
+      Create the bit! You go through the whole list, and add 2^n for every n in the list to your accumulator. This takes O(n) time because bitwise and is O(1) time. Here is the code in racket: <br>
+
+      (define (make-bit lst acc) <br>
+  (cond [(empty? lst) acc]<br>
+        [(= (bitwise-and acc (first lst)) 0) (make-bit (rest lst) (+ acc (expt 2 (first lst))))]<br>
+        [else (make-bit (rest lst) acc)]))<br>
+
+      Now you go through the entire list again, checking to see if 2^(n + a) is in your big binary number, and if it isn't then you return false, else return true. This is also O(n) time. Code:
+      (define (bitdif bit lst a) <br>
+  (cond [(empty? lst) false]<br>
+        [(= (bitwise-and bit (expt 2 (+ (first lst) a))) 0) (bitdif bit (rest lst) a)]<br>
+        [else true]))<br>
+        So the final function is: <br>
+        (define (difby a lst)
+  (bitdif (make-bit lst 0) lst a))
+  <br>
+  Therefore the final function is O(n + n) which simplifies to O(n). Therefore, with the power of binary, this problem can be solved with O(n) time!!
+    </p>
+</div>

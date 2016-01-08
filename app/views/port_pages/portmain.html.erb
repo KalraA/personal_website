@@ -1,27 +1,12 @@
-
-  <div class = "my-main">
-  <div class = "my-images">
-    <img id = "my-profile", src="https://dl.dropboxusercontent.com/u/61478139/Agastya_Backdrop.jpg" />
-  </div>
-  <div id = "my-mainRight">
-    <h3 id = "my-me">
-      Yo, it's Agastya!
-    </h3>
-    <h5 id = "my-descrip">
-      I'm a programmer, animator, artist, web developer, philospher, dancer, and chess player studying computer science at the University of Waterloo.
-    </h5>
-  </div>
-  <div id = "my-mainLeft">
-  </div>
-  <p class = "my-mainBut"> Github </p>
-  <p class = "my-mainBut"> Resume </p>
-  <p class = "my-mainBut"> Portfolio </p>
-</div>
-<div class = "my-line">
+<div class = "my-content", id = "art-content", style = "text-align: center">
+  <h2 class = "my-headTitle" style = "width = 100%;">
+    Portfolio
+    <hr>
+  </h2>
+  <br>
 </div>
 
-<br>
-<a href = "/blog"> <h2 style = "color: white;"> Blog </h2> </a>
+<h2 style = "color: white;"> Blog </h2>
 
 
 <div class = "my-post">
@@ -54,7 +39,7 @@
 </div>
 </div>
 
-<a href = "/programming"> <h2 style = "color: white;"> Programming </h2>
+<h2 style = "color: white;"> Programming </h2>
 
 <%pcounter = 0 %>
 <% @portpages.each do |pp| %>
@@ -86,7 +71,7 @@ my-postImageDiv {
 
 
 
-<a href = "/arts"> <h2 style = "color: white;"> Artwork </h2>
+<h2 style = "color: white;"> Artwork </h2>
 
 
 <% acounter = 0 %>
@@ -111,7 +96,7 @@ my-postImageDiv {
 <% end %>
 
 
-<a href = "/public"> <h2 style = "color: white;"> Public Speaking </h2>
+<h2 style = "color: white;"> Public Speaking </h2>
 
 <% @pubs.each do |pp| %>
 <div class = "my-post">

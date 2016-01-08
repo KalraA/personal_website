@@ -1,0 +1,104 @@
+<div class = "my-content", id = "art-content", style = "text-align: center">
+  <h2 class = "my-headTitle" style = "width = 100%;">
+    Knight's Tour - The Process
+    <hr>
+  </h2>
+  <br>
+  <p style="float: right; margin-right: 20px;"> December 2015 </p>
+  <br>
+    <h1>
+      Problem:
+    </h1>
+    <p class="my-filler">
+      Write an algorithm, that can find, given a starting square, a path for the White Knight to go to every square on the chessboard. I also decided that I would do it with brute force, because that is always fun!
+    </p>
+    <h1>
+      Initial Attempt:
+    </h1>
+    <p class="my-filler">
+      So how to go about this problem? My first idea, was to create a list of legal moves, given any size board. Then given the first move, check every possible legal move. Every time a legal move is played, you remove it from a list, when the list of possible moves has been completed, then we know we have found a way.
+    </p>
+    <h3>
+      The Code:
+    </h3>
+    <p>
+      (struct N (c r) #:transparent) <br>
+      This defines the structure, c is the coloumn number, and r is the row number. Next we need to define a function that will give us all the legal moves given the position of the knight<br>
+      (define (moves-list m)<br>
+  (let ((a (N-c m)))<br>
+    (let ((b (N-r m)))<br>
+      (list (N (- a 2) (- b 1)) (N (- a 2) (+ b 1)) (N (+ a 2) (- b 1)) (N (+ a 2) (+ b 1)) (N (- a 1) (- b 2)) (N (- a 1) (+ b 2)) (N (+ a 1) (- b 2)) (N (+ a 1) (+ b 2))))))<br>
+<br>
+This section here takes in the knight position (m), and finds all legal moves around it, returning them in a list. Since this is a calucation, and involves no dynamic programming or loops, but is about 10 steps, which is O(10) or basically constant time, so O(1) time.
+The next step is to figure out, how with the dimensions a and b, how to produce a list with every knight move on it.
+<br>
+(define (mlist a b c)<br>
+  (cond [(= a 0) (mlist c (- b 1) c)]<br>
+        [(= b 0) empty]<br>
+        [else (cons (N a b) (mlist (sub1 a) b c))]))<br>
+<br>
+This takes the dimensions a and b, and c will be set to a, and recurses through the dimensions and produces the initial list of all possible squares. The time complexity of this is pretty irrelevent because this happens only once at the start.
+Now we have a simple function that checks to see which moves in one list are in another list, this is used later. Finally we put it all together in main recursive function:
+<br>
+(define (k-t lst ms n)<br>
+<br>
+This takes in a list of every legal move in the position (lst), a list containing all moves played so far (ms), and the number of total moves that need to be played, (n).
+<br>
+(cond [(= n 1) `(())]<br>
+<br>
+the base case is and list with an empty list, because this function outputs a list of lists, and so if we have reached the number of moves we need to make, we have found a sequence of moves that work, so give it an empty list.
+<br>
+[(empty? (legal-moves lst (moves-list (first ms)))) empty]<br>
+<br>
+if there are no legal moves, then just return an empty list, because we have run out of legal moves to make therefore this is no longer valid. Now the recursive call.
+<br>
+[else (foldr (lambda (x r) (append (map (lambda (y) (cons x y)) (k-t (remove x lst) (cons x ms) (- n 1))) r)) empty (legal-moves lst (moves-list (first ms))))]))<br>
+<br>
+so foldr takes in a list of legal moves, and to each move, adds calls k-t on the it, while adding it to the accumulator with all of the moves played so far, appending them all together.
+This works, but let's take a look at time complexity.
+<br>
+</p>
+<h3> Time Complexity </h3>
+<p>
+  So the main function checks all possible moves starting from a specific point. So if you are trying to figure out how slow, you must break down the recursive call. (legal-moves lst (moves-list (first ms))) would be O(m*n) where n is the number of possible moves, and n is the number of remaining moves. Now since the number of possible moves has a cap for 8, we can take it out and call it O(n) time. <br>
+  Next we have the (foldr (lambda (x r) (append (map (lambda (y) (cons x y)) (k-t (remove x lst) (cons x ms) (- n 1))) r)). Well this has a foldr with an append on a map on the recursive call. That's pretty ugly. worst case the recurive call is called a*b times, where a*b is the number of legal moves, for each possible moves. So this becomes O((a*b)^(a*b)) recursive calls, and each call having O(a*b) time. That's pretty rough, and on an 8x8 board, it wouldn't return an answer.
+</p>
+<h1>
+  Attempt 2:
+</h1>
+<p>
+  So maybe storing all the squares in a list isn't the best idea, what about storing them all in binary search trees. Trees have a lookup time of O(log(n)) time, also I didn't actually know racket had arrays and hashes, so I didn't use those!
+  So the idea was that to check if a move was played or not, it would take O(log(a*b)) time, which is faster than O(a*b). Also the BST remove time is O(log(n)) because we are first building a perfectly balanced binary search tree. Although this improves worst case scenerio, average cases are still the same, and it never finished running on an 8x8 board. So let's try something else.
+</p>
+<h1>
+  Attempt 3: Graphs
+</h1>
+<p>
+  What about using a graph. So I created a graph, that goes through each possible moves, and builds a graph that has each legal move it can make. The idea was that you no longer have to calculate the moves. Also this way I could implement a backtracking algorithm, that would end immediately after the first winning sequence was found. This almost worked, however this wasn't super good, as finding the element in my graph represented as a list would still take O(n) time, where (n) is the size of the board, and then you would still have to cross reference them with the moves already played and it ended up actually being slower than the original.
+</p>
+<h1>
+  Attempt 4.0: Binary Numbers!
+</h1>
+<p>
+  What if, instead of being represented as a structure, each square was represented as a binary number. so top left is 2^0, and bottom right is 2^63. This was adding and removing from the total list of moves played would be O(1) time, as it is simply an adding. the first square plus the last square would be 2^0 + 2^63. <br>
+  What about checking to see if a move was already played? Well that can be solved in O(1) time as well, with a bitwise-and operation. How would you find the legal moves given a specific square, well heres what I did: <br>
+  First, I represented the board as a 12x12 gride, where the outer two squares on all sides were 1, and the rest were 0. So: <br>
+  (define border (string->number "111111111111111111111111110000000011110000000011110000000011110000000011110000000011110000000011110000000011110000000011111111111111111111111111" 2))<br>
+  That way, if a move goes off the board, then we can bitwise-and it with border, it will return a non-zero number, and we will know not to look at it. Next, we have to find all the legal moves: <br>
+  (define N `(-10 -14 -23 -25 10 14 23 25))<br>
+<br>
+  This is a list of all the legal knight moves from square zero, to find all of the legal moves from any other square, just add the number of that square to each of the numbers in the list 'N', and you will find them!
+  <br>
+  Even with all of this, it wasn't working! So what did I do?
+</p>
+  <h1>
+    Attempt 4.1: Lists, Graphs, Trees, Binary, and Heuristics!
+  </h1>
+  <p>
+    So what's the point of knowing all of these data structures, if you cannot use them! So I put them all together. First I started with Heuristics. I wrote a quicksort, that would take all of the legal moves found, and sort them based on how many legal king moves each one had. Then look at the moves in that order, helping find good moves faster! <br>
+    Then, I created a graph, that given each move, would tell you what all the legal moves in the position was. Every time a move was made, the program would remove that move, from the neighbors of all of the moves neighbors, that way, if there existed a move that had not been played and had no neighbors, we should stop looking, because there is no way there will be a solution now. This cut off huge portions of the tree! The program also checks to see if there are moves that are exclusively each other's neighbors, this would trim the tree some more. <br>
+    Then instead of being stored as a list of a list of a list, the graph was stored as a binary search tree, and since all the moves were numbers, it was easy to created a balanced tree. Also we never removed moves from the tree, only from the values on the tree, so a move could be looked up, and then all of the removals would be made, all in O(log(n)) time. All these put together made a very powerful system that produced over 100 results in 10 seconds, which is pretty amazing for brute force! <br>
+    <a href="https://github.com/kalraA/knights-tour"> Check out the code! </a>
+  </p>
+
+</div>

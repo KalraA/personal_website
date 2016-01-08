@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   get 'programming/:id' => 'port_pages#showw', as: :portpage
   get 'arts/:id' => 'port_pages#art', as: :artz
   get 'public-speaking/:id' => 'port_pages#pub', as: :pubz
-
+  get 'blog/1' => "port_pages#knights"
+  get 'blog/2' => "port_pages#bits"
+  get '/blog' => "port_pages#blogpage"
+  get '/programming' => "port_pages#progpage"
+  get '/public' => "port_pages#pubspeak"
+  get '/artwork' => "port_pages#artwork"
+  get '/portfolio' => "port_pages#portmain"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

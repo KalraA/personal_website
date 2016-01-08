@@ -1,0 +1,29 @@
+<div class = "my-content", id = "art-content", style = "text-align: center">
+  <h2 class = "my-headTitle" style = "width = 100%;">
+    Artwork
+    <hr>
+  </h2>
+  <br>
+</div>
+
+<h2 style = "color: white;"> Artwork </h2>
+
+
+<% acounter = 0 %>
+<% @arts.each do |a| %>
+<div class = "my-post">
+  <div class = "my-postText">
+<h2 class = "my-postTitle">
+  <%= a.title %>
+</h2>
+  <p class = "my-postDescrip">
+    <%= a.description %>
+    <br>
+    <%= link_to "Learn more", artz_path(a) %>
+  </p>
+</div>
+  <div class = "my-postImageDiv">
+</div>
+</div>
+<% acounter += 1 %>
+<% end %>

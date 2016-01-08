@@ -14,4 +14,24 @@ class PortPagesController < ApplicationController
   def pub
     @speech = PubData.find(params[:id])
   end
+  def knights
+  end
+  def bits
+  end
+  def artwork
+    @arts = ArtData.all
+  end
+  def blogpage
+  end
+  def portmain
+    @portpages = PortInfo.all
+    @arts = ArtData.all
+    @pubs = PubData.all
+  end
+  def pubspeak
+    @pubs = PubData.all
+  end
+  def progpage
+    @portpages = PortInfo.all
+  end
 end
