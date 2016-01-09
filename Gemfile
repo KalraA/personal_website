@@ -5,6 +5,8 @@ gem 'rails_12factor'
 gem 'rails', '4.1.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-will_paginate'
+gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -27,8 +29,8 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
-
-gem "twitter-bootstrap-rails"
+gem 'autoprefixer-rails'
+gem "twitter"
 # Use unicorn as the app server
 # gem 'unicorn'
 
