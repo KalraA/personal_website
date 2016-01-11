@@ -1,4 +1,7 @@
-
+p {
+  font-family: serif;
+  font-size: 150;
+}
 .my-feature {
   height: 350px;
   width: 100%;
@@ -14,7 +17,7 @@ body {
 html {
   text-decoration: none !important;
   margin: 0px;
-  background: url("https://dl.dropboxusercontent.com/u/61478139/tileable-classic-nebula-3120261-o.jpg") !important;
+  background: black !important;
   font-family: fantasy !important;
 }
 .my-navbar {
@@ -162,6 +165,7 @@ html {
 }
 
 .my-postText {
+  opacity: 1;
   width: 70%;
   height: 250px;
   float: left;
@@ -254,5 +258,5 @@ html {
 }
 .my-filler {
   margin-bottom: 3px;
-  font-size: 1px;
+  font-size: 20px;
 }
