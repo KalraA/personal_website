@@ -1,132 +1,77 @@
-
-  <div class = "my-main">
-  <div class = "my-images">
-    <img id = "my-profile", src="https://dl.dropboxusercontent.com/u/61478139/Agastya_Backdrop.jpg" />
-  </div>
-  <div id = "my-mainRight">
-    <h3 id = "my-me">
-      Yo, it's Agastya!
-    </h3>
-    <h5 id = "my-descrip">
-      I'm a programmer, animator, artist, web developer, philospher, dancer, and chess player studying computer science at the University of Waterloo.
-    </h5>
-  </div>
-  <div id = "my-mainLeft">
-  </div>
-  <a class = "my-mainBut" href = "https://github.com/KalraA"> Github </a>
-  <a class = "my-mainBut" href="http://kalraa.github.io/"> Resume </a>
-  <a class = "my-mainBut" href="/portfolio"> Portfolio </a>
-</div>
-<div class = "my-line">
-</div>
-
-<br>
-
-<h2 style = "color: white; font-family: fantasy"> Blog </h2>
-
-
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  The Power of Bits!
-</h2>
-  <p class = "my-postDescrip">
-    Solving a problem really effectively using binary numbers!
-    <br>
-    <a href = "/blog/2"> Learn More </a>
-  </p>
-</div>
-  <div class = "my-postImageDiv">
-</div>
-</div>
-
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  Knights Tour: The Journey
-</h2>
-  <p class = "my-postDescrip">
-    The long journey of solving the classic problem of the knight's tour effectively! Lots of interesting ideas!
-    <br>
-    <a href = "/blog/1"> Learn More</a>
-  </p>
-</div>
-  <div class = "my-postImageDiv">
-</div>
-</div>
-
-<h2 style = "color: white; font-family: fantasy"> Programming </h2>
-
-<%pcounter = 0 %>
-<% @portpages.each do |pp| %>
-<% if pcounter < 3 %>
-<% style = "background-image: url(" + pp.port_images[0].imageLink + ");" %>
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  <%= pp.title %>
-</h2>
-  <p class = "my-postDescrip">
-    <%= pp.description %>
-    <br>
-    <%= link_to "Learn more", portpage_path(pp) %>
-  </p>
-</div>
-<style>
-my-postImageDiv {
-  <%= style %>
-}
-</style>
-<div class = "my-postImageDiv">
-
-</div>
-</div>
-<% pcounter = pcounter + 1 %>
-<% end %>
-<% end %>
-
-
-
-<h2 style = "color: white; font-family: fantasy"> Artwork</h2> </a>
-
-
-<% acounter = 0 %>
-<% @arts.each do |a| %>
-<% if acounter < 3 %>
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  <%= a.title %>
-</h2>
-  <p class = "my-postDescrip">
-    <%= a.description %>
-    <br>
-    <%= link_to "Learn more", artz_path(a) %>
-  </p>
-</div>
-  <div class = "my-postImageDiv">
-</div>
-</div>
-<% acounter += 1 %>
-<% end %>
-<% end %>
-
-
-<h2 style = "color: white; font-family: fantasy"> Public Speaking </h2>
-
-<% @pubs.each do |pp| %>
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  <%= pp.title %>
-</h2>
-  <p class = "my-postDescrip">
-    <%= pp.description %>
-    <br>
-    <%= link_to "Learn more", pubz_path(pp) %>
-  </p>
-</div>
-  <div class = "my-postImageDiv">
-</div>
-</div>
-<% end %>
+       
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <section id="about" class="info about-info">
+            <h1>About</h1>
+            <div id="about-content">
+                <img src="//dl.dropboxusercontent.com/u/61478139/Agastya_Backdrop.jpg" class="about-img">
+                <h4>Yo, I'm Agastya.</h4>
+                <p>I'm a University Waterloo student who has a passion for chess, AIs, software, digital art, animation, and dance. I enjoy learning new things and solving difficult problems.</p>
+            </div>
+        </section>
+    <section id="blog" class="info blog-info">
+        <h1>Blog</h1>
+        <div class="blog-post-container">
+            <article id="blog-post-1">
+            <h2>The Power of Bits!</h2>
+            <p> Learn about using bit vectors to solve problems with increased efficiency. The other day my friend challenged me to solve a certain problem in O(n) time, and so of course I took it.</p>
+            <a href="/blog/1" class="more">Read More</a>
+            </article>    
+            <article id="blog-post-2">
+            <h2>Knight's Tour: The Journey</h2>
+        <p> The knight's tour: get a knight to travel to all squares on a chessboard exactly once. Usually this problem is done with a specific algorithm. Check out how it can be done with depth first search in Racket!</p>
+            <a href="/blog/2" class="more">Read More</a>
+            </article>
+            <a href="/blog"><h3>Check out my blog for more posts!</h3></a>
+        </div>
+    </section>
+    <section id="projects" class="info project-info">
+        <h1>projects</h1>
+        <div class="projects-container">
+            <%pcounter = 0 %>
+            <% @portpages.each do |pp| %>
+            <% if pcounter < 2 %>
+            <article id="project">
+            <h2><%= pp.title %></h2>
+            <p> <%= pp.description %> </p>
+            <p class = "more"> <%= link_to "Read more", portpage_path(pp) %> </p>
+            </article>
+            <% pcounter = pcounter + 1 %>
+            <% end %>
+            <% end %>
+            <a href="/programming"><h3>Check out my portfolio for more info on my projects!</h3></a>
+        </div>
+    </section>
+    <footer id="contact">
+        <div id="footer-content">
+            <h1>Contact</h1>
+            <a class="icon-with-info" href="http://github.com/agastyakalra">
+                <span class="mega-octicon octicon-mark-github"></span>
+                <p class="icon-desc">Github</p>
+            </a>
+            <a class="icon-with-info">
+                <span class="mega-octicon octicon-comment"></span>
+                <p class="icon-desc">Email</p>
+            </a>
+            <a class="icon-with-info" href="/resume.pdf">
+                <span class="mega-octicon octicon-file-text"></span>
+                <p class="icon-desc">Resume</p>
+            </a>
+        </div>
+    </footer>
+    </main>

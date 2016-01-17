@@ -7,35 +7,10 @@
   <%= csrf_meta_tags %>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="assets/images/favicon.png" rel="icon" type="image/png">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class = "my-nav" >
-    <ul>
-      <a href= "/"> <li class = 'my-Me'> <strong> Agastya Kalra </strong></li> </a>
-      <a href= "/blog"><li class = 'my-navbar'> Blog </li> </a>
-      <a href= "/portfolio"><li class = 'my-navbar'> Portfolio </li> </a>
-      <a href= "/"><li class = 'my-navbar'> About </li></a>
-    </ul>
-  </div>
-  <div class = "my-line"></div>
 <%= yield %>
-
-
-<br>
-<div class = "my-line">
-  </div>
-<div class = "my-foot">
-  <div id = "footStuff">
-  <h2 class="my-footTitle"> I love meeting new people! Let's get in touch! </h2>
-  <a class = "my-contact-button" href="mailto:agastyakalra@gmail.com">
-    agastya.kalra@gmail.com
-  </a>
-  <a class = "my-contact-button" href="https://github.com/KalraA">
-    Github
-  </a>
-  <a class = "my-contact-button" href="http://KalraA.github.io">
-    Resume
-  </a>
-</div>
 </body>
 </html>

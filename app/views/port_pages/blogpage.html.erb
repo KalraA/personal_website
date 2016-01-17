@@ -1,37 +1,29 @@
-<div class = "my-content", id = "art-content", style = "text-align: center">
-  <h2 class = "my-headTitle" style = "width = 100%;">
-    Blog
-    <hr>
-  </h2>
-  <br>
-</div>
+<!doctype html>
 
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  The Power of Bits!
-</h2>
-  <p class = "my-postDescrip">
-    Solving a problem really effectively using binary numbers!
-    <br>
-    <a href = "/blog/2"> Learn More </a>
-  </p>
-</div>
-  <div class = "my-postImageDiv">
-</div>
-</div>
-
-<div class = "my-post">
-  <div class = "my-postText">
-<h2 class = "my-postTitle">
-  Knights Tour: The Journey
-</h2>
-  <p class = "my-postDescrip">
-    The long journey of solving the classic problem of the knight's tour effectively! Lots of interesting ideas!
-    <br>
-    <a href = "/blog/1"> Learn More</a>
-  </p>
-</div>
-  <div class = "my-postImageDiv">
-</div>
-</div>
+   <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> web developer, <br>CS student at UW.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">Back to site</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+    <section id="blog" class="info blog-info">
+        <h1>All Blog Posts</h1>
+        <article id="blog-post-1">
+            <h2>The Power of Bits!</h2>
+            <p> Learn about using bit vectors to solve problems with increased efficiency. The other day my friend challenged me to solve a certain problem in O(n) time, and so of course I took it.</p>
+            <a href="/blog/1" class="more">Read More</a>
+            </article>    
+            <article id="blog-post-2">
+            <h2>Knight's Tour: The Journey</h2>
+        <p> The knight's tour: get a knight to travel to all squares on a chessboard exactly once. Usually this problem is done with a specific algorithm. Check out how it can be done with depth first search in Racket!</p>
+            <a href="/blog/2" class="more">Read More</a>
+            </article>
+    </section>
+    </main>

@@ -1,22 +1,35 @@
-<div class = "my-content", id = "art-content", style = "text-align: center">
-  <h2 class = "my-headTitle" style = "width = 100%;">
-    Knight's Tour - The Process
-    <hr>
-  </h2>
-  <br>
-  <p style="float: right; margin-right: 20px;"> December 2015 </p>
-  <br>
-  <div style= "width: 80%; margin-left: auto; margin-right:auto">
-    <h1>
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "https://dl.dropboxusercontent.com/u/61478139/KN2.png" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Knight's Tour: The Journey</h1>
+        <div class="post-info">
+            <h2>December 2015</h2>
+            Links: <span class="post-tags"><a href = "/programming/5"> Check out the project! </a></span>
+        </div>
+        <h2>
       Problem:
-    </h1>
-    <p class="my-filler">
+    </h2>
+    <p>
       Write an algorithm, that can find, given a starting square, a path for the White Knight to go to every square on the chessboard. I also decided that I would do it with brute force, because that is always fun!
     </p>
-    <h1>
+    <h2>
       Initial Attempt:
-    </h1>
-    <p class="my-filler">
+    </h2>
+    <p>
       So how to go about this problem? My first idea, was to create a list of legal moves, given any size board. Then given the first move, check every possible legal move. Every time a legal move is played, you remove it from a list, when the list of possible moves has been completed, then we know we have found a way.
     </p>
     <h3>
@@ -64,22 +77,22 @@ This works, but let's take a look at time complexity.
   So the main function checks all possible moves starting from a specific point. So if you are trying to figure out how slow, you must break down the recursive call. (legal-moves lst (moves-list (first ms))) would be O(m*n) where n is the number of possible moves, and n is the number of remaining moves. Now since the number of possible moves has a cap for 8, we can take it out and call it O(n) time. <br>
   Next we have the (foldr (lambda (x r) (append (map (lambda (y) (cons x y)) (k-t (remove x lst) (cons x ms) (- n 1))) r)). Well this has a foldr with an append on a map on the recursive call. That's pretty ugly. worst case the recurive call is called a*b times, where a*b is the number of legal moves, for each possible moves. So this becomes O((a*b)^(a*b)) recursive calls, and each call having O(a*b) time. That's pretty rough, and on an 8x8 board, it wouldn't return an answer.
 </p>
-<h1>
+<h2>
   Attempt 2:
-</h1>
+</h2>
 <p>
   So maybe storing all the squares in a list isn't the best idea, what about storing them all in binary search trees. Trees have a lookup time of O(log(n)) time, also I didn't actually know racket had arrays and hashes, so I didn't use those!
   So the idea was that to check if a move was played or not, it would take O(log(a*b)) time, which is faster than O(a*b). Also the BST remove time is O(log(n)) because we are first building a perfectly balanced binary search tree. Although this improves worst case scenerio, average cases are still the same, and it never finished running on an 8x8 board. So let's try something else.
 </p>
-<h1>
+<h2>
   Attempt 3: Graphs
-</h1>
+</h2>
 <p>
   What about using a graph. So I created a graph, that goes through each possible moves, and builds a graph that has each legal move it can make. The idea was that you no longer have to calculate the moves. Also this way I could implement a backtracking algorithm, that would end immediately after the first winning sequence was found. This almost worked, however this wasn't super good, as finding the element in my graph represented as a list would still take O(n) time, where (n) is the size of the board, and then you would still have to cross reference them with the moves already played and it ended up actually being slower than the original.
 </p>
-<h1>
+<h2>
   Attempt 4.0: Binary Numbers!
-</h1>
+</h2>
 <p>
   What if, instead of being represented as a structure, each square was represented as a binary number. so top left is 2^0, and bottom right is 2^63. This was adding and removing from the total list of moves played would be O(1) time, as it is simply an adding. the first square plus the last square would be 2^0 + 2^63. <br>
   What about checking to see if a move was already played? Well that can be solved in O(1) time as well, with a bitwise-and operation. How would you find the legal moves given a specific square, well heres what I did: <br>
@@ -92,14 +105,16 @@ This works, but let's take a look at time complexity.
   <br>
   Even with all of this, it wasn't working! So what did I do?
 </p>
-  <h1>
+  <h2>
     Attempt 4.1: Lists, Graphs, Trees, Binary, and Heuristics!
-  </h1>
+  </h2>
   <p>
     So what's the point of knowing all of these data structures, if you cannot use them! So I put them all together. First I started with Heuristics. I wrote a quicksort, that would take all of the legal moves found, and sort them based on how many legal king moves each one had. Then look at the moves in that order, helping find good moves faster! <br>
     Then, I created a graph, that given each move, would tell you what all the legal moves in the position was. Every time a move was made, the program would remove that move, from the neighbors of all of the moves neighbors, that way, if there existed a move that had not been played and had no neighbors, we should stop looking, because there is no way there will be a solution now. This cut off huge portions of the tree! The program also checks to see if there are moves that are exclusively each other's neighbors, this would trim the tree some more. <br>
     Then instead of being stored as a list of a list of a list, the graph was stored as a binary search tree, and since all the moves were numbers, it was easy to created a balanced tree. Also we never removed moves from the tree, only from the values on the tree, so a move could be looked up, and then all of the removals would be made, all in O(log(n)) time. All these put together made a very powerful system that produced over 100 results in 10 seconds, which is pretty amazing for brute force! <br>
     <a href="https://github.com/kalraA/knights-tour"> Check out the code! </a>
   </p>
-</div>
-</div>
+       </div>
+    </main>
+    </body>
+</htm
