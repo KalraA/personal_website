@@ -1,0 +1,267 @@
+.post-content{
+    position: relative;
+    width:80%;
+    margin:0 auto;
+}
+/* ---- STANDARD STYLING ---- */
+
+
+html, body{
+    background:#222;
+    font:100%/150% 'Source Sans Pro', 'Helvetica', sans-serif;
+    color:#dadada;
+    text-align:right;
+    width:100%;
+    height:100%;
+    padding:0;
+    border:0;
+    margin:0;
+    overflow-x:hidden;
+    overflow-y: auto;
+    word-break: break-word;
+    vertical-align: baseline;
+}
+
+main, section, article, header, footer, nav, aside, figure{ display:block;}
+
+h1{
+    font:300%/100% 'Montserrat', 'Source Sans Pro', 'Helvetica', sans-serif;
+    color:#fff;
+    text-transform: uppercase;
+    text-align:right;
+    padding:0.5em 0;
+    margin:0.5em 0;
+}
+
+h2{ font:150%/100% 'Montserrat', 'Source Sans Pro', 'Helvetica', sans-serif;}
+
+h3{ font:125%/150% 'Montserrat', 'Source Sans Pro', 'Helvetica', sans-serif}
+
+p{ font-size:120%;}
+
+a{
+    color: #EDC063;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover{ color:#EDCC94;}
+
+/* --- HEADER --- */
+
+header{
+    position:fixed;
+    top:0; left:0; 
+    width:40%;
+    height:100vh;
+    background:-webkit-linear-gradient(transparent, rgba(0,0,0,0.5));
+    background:linear-gradient(transparent, rgba(0,0,0,0.5));
+    color:#eee;
+    overflow:hidden;
+    z-index:99;
+}
+
+#header-bg{
+    position:absolute;
+    width:100%; height:100%;
+    background:url('https://dl.dropboxusercontent.com/u/61478139/Backdrop.jpg');
+    background-size: cover;
+    -webkit-filter:blur(0);
+    filter:blur(0);
+    -webkit-transition:all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    z-index:1;
+}
+
+#header-bg:before{
+    position:absolute;
+    left: 0;
+    top:0;
+    width:100%;
+    height:100%;
+    content:'';
+    background:rgba(0,0,0,0.3);
+    z-index:99; 
+}
+
+header:hover #header-bg{
+    -webkit-filter:blur(8px);
+    filter:blur(8px);
+    -webkit-transition:all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.main-title{
+    position:relative;
+    font-weight:700;
+    padding:1.5em 0;
+    color:#eee;
+    letter-spacing:3px;
+    text-align:center;
+    text-transform: uppercase;
+    z-index:99;
+}
+
+#subheader{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    max-height:75vh;
+    padding:3em 0;
+    z-index: 99;
+}
+
+#subheader h2{
+    line-height:125%;
+    padding:1.5em;
+    color:#eee;
+    letter-spacing:2px;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+/* ---- SITE NAVIGATION ---- */
+
+nav{ width:100%; z-index:999;}
+
+nav ul{
+    display:block;
+    width:70%;
+    list-style:none;
+    text-align:center;
+    padding:0;
+    margin:1em auto;
+}
+
+nav li{ display:inline-block; width:15em; margin:1em;}
+
+nav a{
+    display: inline-block;
+    font:200%/150% 'Montserrat', 'Source Sans Pro', 'Helvetica', sans-serif;
+    color:#ddd;
+}
+
+nav a:hover{ color:#fff;}
+
+/* ---- LAYOUT ---- */
+
+main{    
+    position:absolute;
+    top:0; right:0;
+    width:60%;
+    height:auto;
+}
+
+.info, #footer-content{
+    position:relative;
+    width:80%;
+    margin:2em auto 3em auto; 
+    z-index: 1;
+}
+
+/* -- about -- */
+
+#about-content{ min-height:15em;}
+
+.about-img{
+    position:relative;
+    float:right;
+    width:15em;
+    height:15em;
+    margin:0 0 1em 1em;
+}
+
+/* -- blog and programming -- */
+
+.blog-info{ margin:3em auto;}
+
+.project-info{ margin:3em auto;}
+
+article{
+    background:#333;
+    padding:0 0 1em 0;
+    margin:1em auto 2em auto;
+    box-shadow: 0 1px 10px 4px #111;
+}
+
+article h2{
+    color:#000;
+    text-transform: uppercase;
+    background:#ffc55d;
+    padding:1em;
+    margin:0;
+}
+
+article p{ padding:1em;}
+
+.more{
+    display:block;
+    padding:0.5em;
+    margin:0 0.5em;
+    font:125%/120% 'Montserrat', 'Source Sans Pro', 'Helvetica', sans-serif;
+    color:#ffb93d;
+}
+
+.more:hover{ color:#ffc55d;}
+
+/* -- footer -- */
+
+footer{ width:100%; text-align:center;}
+
+footer h1{ color:#fff;}
+
+#footer-content .mega-octicon{ font-size:64px;}
+
+.icon-with-info{
+    display:inline-block;
+    width:100px;
+    padding:0 1em;
+    margin:1em;
+    font-family: 'Montserrat', 'Source Sans Pro', 'Helvetica', sans-serif;
+    text-align:center;
+    text-transform:capitalize;
+}
+
+.icon-desc{ display:block;}
+
+/* ---- BLOG/PROJECT POST CONTENT ---- */
+
+.post-content{
+    position: relative;
+    width:80%;
+    text-align: left;
+    padding-bottom:1em;
+    margin:0 auto;
+}
+
+.post-content h1{
+    font-size: 200%;
+    text-align: left;
+    text-transform: none;
+    padding:1em 0;
+    margin:1em 0 0.5em 0;
+}
+
+.post-info{ position:relative; top:0; font-size: 110%;}
+
+.post-info h2{ font-size: 125%; padding:0 0 0.5em 0; margin:0;}
+
+.post-tags{ color: #ffc55d; }
+
+.post-tags:hover{ color:#6495ed; }
+
+.post-content p{ line-height:150%; text-align: left;}
+/* This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *
+ *
+ */
