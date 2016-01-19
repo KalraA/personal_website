@@ -18,6 +18,10 @@ class PortPagesController < ApplicationController
   end
   def bits
   end
+  def vectors
+  end
+  def TSS
+  end
   def artwork
     @arts = ArtData.all
   end

@@ -9,7 +9,9 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#blog">Blog</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#projects">Programming</a></li>
+                    <li><a href="#artwork">Artwork</a></li>
+                    <li><a href="#public">Public Speaking</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -27,25 +29,30 @@
     <section id="blog" class="info blog-info">
         <h1>Blog</h1>
         <div class="blog-post-container">
+            <article id="blog-post-0">
+            <h2>Vectorizing Forward/Back Propogation for Neural Networks</h2>
+            <p>There's a machine learning on coursera that I've been actively following, and in a recent lecture, the professor, Andrew Ng, explained how to implement the backpropogation algorithm. His implementation involved a for-loop going through all the data one at a time. He never actually taught how to do it with pure vectors, so I derived it. Check out how!</p>
+            <a href="/blog/0" class="more">Read More</a>
+            </article>
+            <article id="blog-post-0">
+            <h2>Recursively Implementing Breadth First Search Functionally</h2>
+            <p>Breadth First Search is an algorithm for searching through a graph one level at a time. My friend told me that it is impossible to do recursively, and so obviously I had to give it a try! Usually BFS is implemented interatively. This is a recursive implementation of BFS in a Scheme dialect known as Racket.</p>
+            <a href="/blog/-1" class="more">Read More</a>
+            </article>    
             <article id="blog-post-1">
             <h2>The Power of Bits!</h2>
             <p> Learn about using bit vectors to solve problems with increased efficiency. The other day my friend challenged me to solve a certain problem in O(n) time, and so of course I took it.</p>
             <a href="/blog/2" class="more">Read More</a>
-            </article>    
-            <article id="blog-post-2">
-            <h2>Knight's Tour: The Journey</h2>
-        <p> The knight's tour: get a knight to travel to all squares on a chessboard exactly once. Usually this problem is done with a specific algorithm. Check out how it can be done with depth first search in Racket!</p>
-            <a href="/blog/1" class="more">Read More</a>
-            </article>
-            <a href="/blog"><h3>Check out my blog for more posts!</h3></a>
+            </article>  
+            <a href="/blog"><h3>Check out my full blog!</h3></a>
         </div>
     </section>
     <section id="projects" class="info project-info">
-        <h1>projects</h1>
+        <h1>Programming</h1>
         <div class="projects-container">
             <%pcounter = 0 %>
             <% @portpages.each do |pp| %>
-            <% if pcounter < 2 %>
+            <% if pcounter < 2 or pcounter == 4 %>
             <article id="project">
             <h2><%= pp.title %></h2>
             <p> <%= pp.description %> </p>
@@ -54,7 +61,41 @@
             <% pcounter = pcounter + 1 %>
             <% end %>
             <% end %>
-            <a href="/programming"><h3>Check out my portfolio for more info on my projects!</h3></a>
+            <a href="/programming"><h3>Check out my full programming portfolio!</h3></a>
+        </div>
+    </section>
+    <section id="artwork" class="info project-info">
+        <h1>Artwork</h1>
+        <div class="projects-container">
+            <%pcounter = 0 %>
+            <% @arts.each do |pp| %>
+            <% if pcounter < 2 %>
+            <article id="project">
+            <h2><%= pp.title %></h2>
+            <p> <%= pp.description %> </p>
+            <p class = "more"> <%= link_to "Read more", artz_path(pp) %> </p>
+            </article>
+            <% pcounter = pcounter + 1 %>
+            <% end %>
+            <% end %>
+            <a href="/artwork"><h3>Check out my full artwork portfolio!</h3></a>
+        </div>
+    </section>
+    <section id="public" class="info project-info">
+        <h1>Public Speaking</h1>
+        <div class="projects-container">
+            <%pcounter = 0 %>
+            <% @pubs.each do |pp| %>
+            <% if pcounter < 2 %>
+            <article id="project">
+            <h2><%= pp.title %></h2>
+            <p> <%= pp.description %> </p>
+            <p class = "more"> <%= link_to "Read more", pubz_path(pp) %> </p>
+            </article>
+            <% pcounter = pcounter + 1 %>
+            <% end %>
+            <% end %>
+            <a href="/public"><h3>Check out my full public speaking portfolio!</h3></a>
         </div>
     </section>
     <footer id="contact">

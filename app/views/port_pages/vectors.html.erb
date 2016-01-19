@@ -1,0 +1,38 @@
+'
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "http://www.seattlerobotics.org/encoder/nov98/nnfig1.jpg" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Vectorizing Forward/Back Propogation for Neural Networks</h1>
+        <div class="post-info">
+        <h2>December 2015</h2>
+        </div>
+        <h2> Introduction </h2>
+        <p> There is a really amazing in depth machine learning course on Coursera taught by Stanford professor Andrew Ng that covers a wide variety of topics from neural networks to anomaly detection to variance vs. bias error analysis. In this course, he teaches the forward and back propogation algorithms as part of how to find the gradient for a given set of theta values for a neural network. Now in the video, he explains how to do it with for loops, but that's really slow. No where in the course does he explain a vectorized implementation, so I decided to derive one! </p> 
+        <h2> Computing the Partial Derivative </h2>
+        <p> So what actually is the algorithm? When trying to minimize the cost function of a neural network by the use of gradient descent or other optimized algorithms, you need to be able to compute the Cost function and the partial derivative of the cost function. Computing the partial derivative of the cost function in a neural network requires the use of forward and back propogation. For specific details on what exactly the algorithms are doing, <a href= "https://en.wikipedia.org/wiki/Backpropagation"> click here. </a> a single blog post probably isn't long enough to effectively explain them. 
+        <h2> Vectorizing Forward Propogation </h2>
+        So in the neural network I used, there were 400 input nodes, plus the bias for 401, 5000 training examples, 25 hidden nodes in one layer, plus the bias so 26, then lastly there were 10 output nodes, to represent the digits 0-9. The a_1 value was a 5000x400 matrix with all the data for each training example in each row. So first the bias node must be added to each row, so a coloumb of 1s is added to the start of the matrix making it 5000x401. Then you multiply it by the Theta1 transpose value, which has the current guess for Theta1. that's a 5000x401 * 401x25, giving us 5000x25. This is your z1 value. Now you apply the sigmoid function to all of your values to get an answer between 0 and 1, since this is a classification problem. Next you repeat the steps for Theta2, getting a 5000x10 matrix with all values between 0 and 1. This completes forward propogation without for loops. Now for the real challenge:
+        <h2> Vectorizing Back Propogation </h2>
+        <p>
+        Now we have to complute the lowercase delta (ld) values for each set of nodes, this determines how 'responsible' each node is for the innaccuracy. ld3 is simply the output minus the correct output, in this case 'y'. ld1 = a3 - y. Since both are 5000x10 matrices this is easy. Now calculating ld2 is quite tricky. You want to figure out how much each node in the hidden layer is resposible for the error, so you take the ld3 values, and multiply them with the Theta values except for the bias because the bias was set to 1, and doesn't contribute to the error. Then you also want to compute the gradient of your function, in this case the sigmoid function on each of the values before you applied it. Then simply element wise multiplying those two will give you ld2. So in formulas: ld3*Theta2 .* (element-wise multiplication) g'(z2). ld3 is 5000x10 and Theta2 is 10x26, but minus the bias so 10x25. This gives us a 5000*25 matrix, which is the size of z2, thus allowing us to simultaneously calculate delta values for each training example. By the way, the sigmoid gradient is g(x)(1-g(x)). This computes the ld2 value. ld1 does not need to be calculated because we do not control the input nodes' values. Now we calculate the uppercase delta values for each layer simultaneously updated for each training example. This is actually a lot simpler than I initially thought it would be. You just multiply the ld transpose value for the next layer by the value of each node in your layer. e.g. for layer 2, it would be ld3T*a2. This works because the summations are part of matrix multiplication. This is a 10x5000 matrix multiplied by a 5000x25 matrix, giving us a 10x25 matrix that we can then use later to calculate the partial derivative of the cost of each set of Theta values. All done without using a for loop.
+        </p>
+        <h2> Conclusion </h2>
+        <p> When running many iterations of gradient decent, it is important to have it in the most efficient way possible. This implementation is about 30-100 times faster than a for loop one depending on which library/language you are using to implement it because the in-built matrix operations are optimized and much faster than regular loops. </p>
+       </div>
+    </main>
+    </body>
+</htm

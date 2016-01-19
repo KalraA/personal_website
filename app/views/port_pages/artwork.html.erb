@@ -20,14 +20,14 @@
     </header>
     <main>
     <section id="blog" class="info blog-info">
-        <h1>All Programming Posts</h1>
+        <h1>All Artwork Posts</h1>
             <%pcounter = 0 %>
-            <% @portpages.each do |pp| %>
+            <% @arts.each do |pp| %>
             <% if pcounter > -1 %>
             <article id="project">
             <h2><%= pp.title %></h2>
             <p> <%= pp.description %> </p>
-            <p class = "more"> <%= link_to "Read more", portpage_path(pp) %> </p>
+            <p class = "more"> <%= link_to "Read more", artz_path(pp) %> </p>
             </article>
             <% pcounter = pcounter + 1 %>
             <% end %>

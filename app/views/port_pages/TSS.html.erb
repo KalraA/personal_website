@@ -1,0 +1,49 @@
+'
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Breadth-first-tree.svg/390px-Breadth-first-tree.svg.png" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Recursively Implementing Breadth First Search Functionally</h1>
+        <div class="post-info">
+        <h2>Jan 2016</h2>
+        </div>
+        <h2> Introduction </h2>
+        <p> Breadth First Search is an algorithm for searching through a graph one level at a time. My friend told me that it is impossible to do recursively, and so obviously I had to give it a try! Usually BFS is implemented interatively. This is a recursive implementation of BFS in a Scheme dialect known as Racket.</p> 
+        <h2> Code </h2>
+        <code> 
+            (struct N (k l f) #:transparent) <br>
+            <br>
+    (define (add-to-end lst n) <br>
+  (cond [(empty? lst) (cons n empty)]<br>
+        [else (cons (first lst) (add-to-end (rest lst) n))]))<br>
+<br>
+(define (bfs node que)<br>
+  (if (false? node) true (display (N-k node)))<br>
+  (my-while (add-to-end (add-to-end que (N-l node)) (N-f node))))<br>
+<br>
+(define (my-while que)<br>
+     (cond [(empty? que) (void 1)]<br>
+           [(false? (first que)) (my-while (rest que))]<br>
+           [else (display (N-k (first que))) (my-while (add-to-end (add-to-end (rest que) (N-l (first que))) (N-f (first que))))]))<br>
+           <br>
+       </code>
+       <h2> How it works </h2>
+       <p> So let's do it one function at a time. Firstly, the struct at the top is a simple node with only key a left and a right branch. This code can be modified to fit a graph, but for now it's on a binary search tree. Next we have to create an implementation of a queue. I just made it a list, and add-to-end nodes to the end of the list. Now the fun, since racket has no while loops, I recursively wrote a while loop, that until the que is not empty, keep checking each element in the queue. So the program takes the root, and checks it, then adds both its left and right childs to the end of the que. Then for each of the left and right child, it adds their children to the end of the que. Finally, if a node has no children, false is added to the end of the queue, and then those are skipped. This is fully functional breadth first search, with a recursive implementation of a while loop. </p>
+
+       </div>
+    </main>
+    </body>
+</htm

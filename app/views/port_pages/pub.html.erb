@@ -1,0 +1,26 @@
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+         <iframe width="100%" src= <%= @speech.vidLink %> frameborder="0" allowfullscreen></iframe>
+        <div class="post-content">
+        <h1><%= @speech.title %></h1>
+        <div class="post-info">
+            <h2><%= @speech.date %></h2>
+        </div>
+        <p> <%= @speech.description %></p>
+    </main>
+    </body>
+</htm
