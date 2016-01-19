@@ -1,0 +1,62 @@
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "https://dl.dropboxusercontent.com/u/61478139/KN2.png" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Knight's Tour, Part 4: Bit Hackery, Graphs, Trees, and Traphs!</h1>
+        <div class="post-info">
+            <h2>December 2015</h2>
+            Links: <span class="post-tags"><a href = "/programming/5"> Check out the project! </a></span>
+        </div>
+        <h2> Restarting! </h2>
+        <p> So here I started from scratch, and with the help of my friend Tony Zou. We decided to represent the 8x8 board as bit vector. Except instead of making the board 8x8, we made it 12x12 where the outer two rows are not allowed for the knight to travel on. So when we initialized the function, we created the bit called boarder with 1's wherever the knight cannot go, and 0's where the knight is allowed to go. </p>
+        <code>
+          (define border (string->number "111111111111111111111111110000000011110000000011110000000011110000000011110000000011110000000011110000000011110000000011111111111111111111111111" 2))<br>
+        </code>
+        <p> Now we need a way to get all legal moves, given a square. So this we do by creating a list of all the moves from square 0, and then we can add the square too the list to find all of the legal moves. Then we cross reference it with border with a bitwise and. This is all O(1) time. </p>
+        <code>
+         (define N `(-10 -14 -23 -25 10 14 23 25))<br>
+        (define (filter-moves x m) (filter (lambda (y) (zero? (bitwise-and x y))) m))<br>
+        (define (find-move x m) (filter-moves border (map (lambda (u) (* (expt 2 u) x)) m)))<br>
+      </code>
+      <p> I'm not going to go over the depth first search because I made that in other versions, this one is just adapted for bits, now I'm going to go over the traphs! </p>
+      <h2> Traphs! </h2>
+      <p> Ok, yes, they don't exist. I know, but I basically took a graph, and implemented it as a binary search tree. So the graph is the same as the one in Try 3. Given a square, it returns all possible knight moves. Each square is a key in a binary search tree, and the value is the list of moves. The code for this below. </p>
+      <code>
+        (struct node (key moves left right))<br>
+        (define (bst-search k bst)<br>
+  (cond [(empty? bst) empty]<br>
+        [(false? bst) empty]<br>
+        [(equal? k (node-key bst)) (node-moves bst)]<br>
+        [(< k (node-key bst)) (bst-search k (node-left bst))]<br>
+        [(> k (node-key bst)) (bst-search k (node-right bst))]<br>
+        [else (error "there was a mistake")]))<br>
+      </code>
+      <p> Why is this useful? Well now graph lookup is O(logn). Now every time a move is played, it is removed from all of it's neighbors. This is a way to avoid bst remove. Also this allows us to check if any square is out of moves, then we can cut the tree earlier. This is done by falser. </p>
+      <code>
+        (define (falser mt mto)<br>
+  (cond [(empty? mt) true]<br>
+        [(empty? (node-moves mt)) false]<br>
+        [(and (empty? (rest (node-moves mt))) (equal? (list (node-key mt)) (bst-search (first (node-moves mt)) mto))) false]<br>
+        [else (and (falser (node-left mt) mto) (falser (node-right mt) mto))]))<br>
+      </code>
+      <p> This function takes in a binary tree, and checks if any moves have no neighbors, as well as if two moves are mutual neighbors. </p>
+      <h2> Results </h2>
+      <p> This algorithm was powerful enough to find 100 solutions in 10 seconds by brute force. Click the link below to get the code! </p>
+<a href="https://github.com/kalraA/knights-tour"> Check out the code of the final one! </a>
+       </div>
+    </main>
+    </body>
+</htm

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'programming/:id' => 'port_pages#showw', as: :portpage
   get 'arts/:id' => 'port_pages#art', as: :artz
   get 'public-speaking/:id' => 'port_pages#pub', as: :pubz
-  get 'blog/1' => "port_pages#knights"
+  get 'blog/1' => "port_pages#knights4"
+  get 'blog/3' => "port_pages#knights3"
+  get 'blog/4' => "port_pages#knights2"
+  get 'blog/5' => "port_pages#knights"
   get 'blog/2' => "port_pages#bits"
   get '/blog' => "port_pages#blogpage"
   get '/programming' => "port_pages#progpage"

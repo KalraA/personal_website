@@ -1,0 +1,51 @@
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "https://dl.dropboxusercontent.com/u/61478139/KN2.png" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Knight's Tour, Part 3: Graphs</h1>
+        <div class="post-info">
+            <h2>December 2015</h2>
+            Links: <span class="post-tags"><a href = "/programming/5"> Check out the project! </a></span>
+        </div>
+        <h2> New Plan: </h2>
+        <p> So I had to learn graphs for my friends final, because I had to explain it to them in the morning. So the best way to learn something, is to apply it! So at 3am, I rebuild the knights tour using graphs. The idea is, given a move in the graph, it's neighbours are the legal moves that can be made. </p>
+        <h2> The Code </h2>
+        <code>
+          (define (mgraph lst a b)<br>
+  (cond [(empty? lst) empty]<br>
+        [else (cons `(,(first lst) ,(find-moves (first lst) a b)) (mgraph (rest lst) a b))]))<br>
+        </code>
+        <p> This piece here takes a list of possible moves, and converts it into a graph, now my attempt at creating my first depth first search to traverse through a graph. </p>
+        <code>
+          (define (find-route orig n G vis)<br>
+  (cond [(= n 0) (list orig)]<br>
+        [(empty? (neighbors orig G)) false]<br>
+        [(member? orig vis) false]<br>
+        [else (let ((x (find-route-list (neighbors orig G) n G (cons orig vis)))) (if (false? x) false (cons orig x)))]))<br>
+<br>
+(define (find-route-list lst n G vis)<br>
+  (cond [(empty? lst) false]<br>
+        [else <br>
+        (let ((x (find-route (first lst) (- n 1) G vis))) <br>
+          (cond [(false? x) (find-route-list (rest lst) n G vis)]<br>
+                [else x]))]))<br>
+        </code>
+        <p> Let's take this one step at a time. So find-route takes in orig (the current node), n (the number of squares you must traverse), G (the graph), and vis(the number of nodes already visited). The idea is to get n -> 0, meaning all squares have been traversed, and if we run out of moves, return false. Or else, call find-route-list on each of the elements in the neighbors of the current square. Then find-route-list calls find-route on every element of the list inputted. This is slow, but it works and finds one solution. however this is also too slow to do an 8x8 board. </p>
+<a href="https://github.com/kalraA/knights-tour"> Check out the code of the final one! </a>
+       </div>
+    </main>
+    </body>
+</htm

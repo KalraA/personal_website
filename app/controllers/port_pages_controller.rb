@@ -16,6 +16,12 @@ class PortPagesController < ApplicationController
   end
   def knights
   end
+  def knights2
+  end
+  def knights3
+  end
+  def knights4
+  end
   def bits
   end
   def vectors

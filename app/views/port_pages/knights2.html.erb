@@ -1,0 +1,82 @@
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "https://dl.dropboxusercontent.com/u/61478139/KN2.png" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Knight's Tour, Part 2: Binary Search Trees</h1>
+        <div class="post-info">
+            <h2>December 2015</h2>
+            Links: <span class="post-tags"><a href = "/programming/5"> Check out the project! </a></span>
+        </div>
+        <h2> Trees </h2>
+        <p> So what do I do now! My list implementation isn't working! So I decided that the correct course of action would be to turn everything into a binary search try. Why? Well I thought this would make the program more effecient, however as I found it, it really made no difference. But let's see what changes I made! </p>
+        <code>
+(define (build-tree lst)<br>
+  (cond [(empty? lst) empty]<br>
+        [else (let ((n (ceiling (/ (length lst) 2)))) (let ((x (mid-list lst n))) (node (mid-list lst n) (build-tree (left-list lst n)) (build-tree (right-list lst n)))))]))<br>
+<br>
+(define (mid-list lst n)<br>
+  (cond [(= n 1) (first lst)]<br>
+        [else (mid-list (rest lst) (- n 1))]))<br>
+<br>
+(define (left-list lst n)<br>
+  (cond [(= n 1) empty]<br>
+        [else (cons (first lst) (left-list (rest lst) (sub1 n)))]))<br>
+<br>
+(define (right-list lst n)<br>
+  (cond [(= n 1) (rest lst)]<br>
+        [else (right-list (rest lst) (sub1 n))]))<br>
+      </code>
+      <p> This is a chunk that runs on the list of moves, turning it into a perfectly balanced binary search tree. This way lookup is O(logn) time. However now I have to deal with remove. So here is binary search tree remove and search. </p>
+      <code>
+        (define (greater n1 n2)<br>
+  (if (> (N-c n1) (N-c n2)) true (if (= (N-c n1) (N-c n2)) (> (N-r n1) (N-r n2)) false)))<br>
+<br>
+(define (bst-search k bst)<br>
+  (cond [(empty? bst) false]<br>
+        [(equal? k (node-key bst)) true]<br>
+        [(not (greater k (node-key bst))) (bst-search k (node-left bst))]<br>
+        [(greater k (node-key bst)) (bst-search k (node-right bst))]<br>
+        [else (error "ooops")]))<br>
+<br>
+(define (bst-remove k bst)<br>
+  (cond [(empty? bst) (error "range too small")]<br>
+        [(and (equal? k (node-key bst)) (empty? (node-left bst))) (node-right bst)]<br>
+        [(and (equal? k (node-key bst)) (empty? (node-right bst))) (node-left bst)]<br>
+        [(equal? k (node-key bst)) (let ((k2 (leftmost (node-right bst)))) (node (node-key k2) (node-left bst) (bst-remove (node-key k2) (node-right bst))))]<br>
+        [(greater k (node-key bst)) (node (node-key bst) (node-left bst) (bst-remove k (node-right bst)))]<br>
+[(not (greater k (node-key bst))) (node (node-key bst) (bst-remove k (node-left bst)) (node-right bst))]<br>
+        [else (error "ooops")]))<br>
+<br>
+(define (leftmost bst)<br>
+  (cond [(empty? (node-left bst)) bst]<br>
+        [else (leftmost (node-left bst))]))<br>
+
+      </code>
+      <p>
+        Since everything is a square, greater than is the same as it is when ordering words, the first number then the second number. BST search just finds a key in the tree. Then BST remove removes a key while keeping the tree perfectly balanced.
+      </p>
+      <code>
+        (define (k-t bst ms n)<br>
+  (cond [(= n 1) (list ms)] <br>
+        [(empty? (legal-moves bst (find-moves (first ms)))) empty]<br>
+        [else (foldr (lambda (x r) (append (k-t (bst-remove x bst) (cons x ms) (- n 1)) r)) empty (legal-moves bst (find-moves (first ms))))]))<br>
+      </code>
+      <p> Only a small modification to the k-t function. The results was slower than the initial attempt because the list constantly get's shorter, and remove for bst is worse than remove from list. This still is unable to find anything on a 8x8 board. </p>
+<a href="https://github.com/kalraA/knights-tour"> Check out the code of the final one! </a>
+       </div>
+    </main>
+    </body>
+</htm
