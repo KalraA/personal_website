@@ -1,0 +1,48 @@
+<!doctype html>
+    <!-- content -->
+    <header>
+        <div id="header-bg"></div>
+        <h1 class="main-title">Agastya Kalra</h1>
+        <section id="subheader">
+            <h2>Chess player,<br> software developer, <br>your AI guy.</h2>
+            <nav>
+                <ul>
+                    <li><a href="/" id="back-link">HOME</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <img src= "https://dl.dropboxusercontent.com/u/61478139/LiveFree.png" style = "width: 100%;" >
+        <div class="post-content">
+        <h1>Penn Apps XIII</h1>
+        <div class="post-info">
+            <h2>January 2016</h2>
+            Links: <span class="post-tags"><a href = "/programming/5"> Check out the project! </a></span>
+        </div>
+       <p>
+        Recently I attended Penn Apps XIII. It has been my favourite hackathon so far, lot’s of fun, food, and friends! Oh and we got a few awards!
+</p>
+<h2> The Prologue </h2>
+<p>
+So before going to Penn Apps, I had decided that I would be building some kind of machine learning hack. I was learning a lot of theory, and applying it on fake data, but I wanted the opportunity to apply it to real data. Real data is really difficult to work with because it isn’t setup to give you good results, you must analyse it and decide what the best methods are going to be. 
+</p>
+<h2> The Beggining </h2>
+<p>
+After checking out all the different available data APIs, I decided I would try out the Johnson and Johnson OTR API. It provided lots of data about glucose patients, and they were offering a prize to the best predictive algorithm, so I had to try. Now they explained to me that a diabetic patient has a monitor called a CGM that provides blood glucose readings every 5 minutes, so I made it a challenge to try and predict where the blood glucose levels would be in 20 minutes. That’s when it got really fun!
+</p>
+<h2> The Struggle </h2>
+<p>
+So my initial neural network had a fixed number of layers and input values, and many other factors that classic neural networks have. There was nothing creative, and my first attempt to predict which of the 5 zones you will be in in 20 minutes produced a solid 51% accuracy.
+
+So one thing I wanted to try was using the SVM cost function, that looks like 2 lines, rather than the cross-entropy cost function, but I was’;t able to get it above 27% with that. So the next step was to plot the learning curve and see what was happening. So I realized that initially it was underfitting the 11,000 data points, so I needed to figure out what to do next. So I decided that I would do what I call machine-caption. I separated the data into test, cross-validation, and training data. I decided to let the algorithm try a bunch of different parameters for inputs, hidden nodes, and lambda values. With this optimization, the computer was able to pick the best values, and increase the accuracy to about 72%.
+</p> 
+<h2> The Ending </h2>
+<p>
+Now after doing variance vs bias analysis I learnt that it was overfitting. Now, after consulting my friends, decided that the best approach would be to do randomized training data. So instead of running 3000 iterations of gradient descent, I would run 30  rounds of 100 iterations of gradient descent on a random 70% of the training data each time. After this, the accuracy increased to 91%. After trying this exact same algorithm with different data sets, I got the results 89%, 91%, 87%, 90%. These are pretty accurate predictors of future glucose levels, allowing diabetic patients, to live free!
+       </p>
+       </div>
+       <img src= "https://dl.dropboxusercontent.com/u/61478139/PennApps.png" style = "width: 100%;" >
+    </main>
+    </body>
+</htm

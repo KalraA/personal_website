@@ -28,6 +28,8 @@ class PortPagesController < ApplicationController
   end
   def TSS
   end
+  def penn
+  end
   def artwork
     @arts = ArtData.all
   end

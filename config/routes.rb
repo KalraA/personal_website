@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/portfolio' => "port_pages#portmain"
   get 'blog/0' => "port_pages#vectors"
   get 'blog/-1' => "port_pages#TSS"
+  get 'blog/-2' => "port_pages#penn"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
